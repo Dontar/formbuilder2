@@ -1,0 +1,153 @@
+/// <reference path="../typings/tsd.d.ts" />
+export var TypeMap = {
+    box: "Ext.BoxComponent",
+    button: "Ext.Button",
+    buttongroup: "Ext.ButtonGroup",
+    colorpalette: "Ext.ColorPalette",
+    component: "Ext.Component",
+    container: "Ext.Container",
+    cycle: "Ext.CycleButton",
+    dataview: "Ext.DataView",
+    datepicker: "Ext.DatePicker",
+    editor: "Ext.Editor",
+    editorgrid: "Ext.grid.EditorGridPanel",
+    flash: "Ext.FlashComponent",
+    grid: "Ext.grid.GridPanel",
+    listview: "Ext.list.ListView",
+    multislider: "Ext.slider.MultiSlider",
+    panel: "Ext.Panel",
+    progress: "Ext.ProgressBar",
+    propertygrid: "Ext.grid.PropertyGrid",
+    slider: "Ext.slider.SingleSlider",
+    spacer: "Ext.Spacer",
+    splitbutton: "Ext.SplitButton",
+    tabpanel: "Ext.TabPanel",
+    treepanel: "Ext.tree.TreePanel",
+    viewport: "Ext.ViewPort",
+    window: "Ext.Window",
+    paging: "Ext.PagingToolbar",
+    toolbar: "Ext.Toolbar",
+    tbbutton: "Ext.Toolbar.Button",
+    tbfill: "Ext.Toolbar.Fill",
+    tbitem: "Ext.Toolbar.Item",
+    tbseparator: "Ext.Toolbar.Separator",
+    tbspacer: "Ext.Toolbar.Spacer",
+    tbsplit: "Ext.Toolbar.SplitButton",
+    tbtext: "Ext.Toolbar.TextItem",
+    menu: "Ext.menu.Menu",
+    colormenu: "Ext.menu.ColorMenu",
+    datemenu: "Ext.menu.DateMenu",
+    menubaseitem: "Ext.menu.BaseItem",
+    menucheckitem: "Ext.menu.CheckItem",
+    menuitem: "Ext.menu.Item",
+    menuseparator: "Ext.menu.Separator",
+    menutextitem: "Ext.menu.TextItem",
+    form: "Ext.form.FormPanel",
+    checkbox: "Ext.form.Checkbox",
+    checkboxgroup: "Ext.form.CheckboxGroup",
+    combo: "Ext.form.ComboBox",
+    compositefield: "Ext.form.CompositeField",
+    datefield: "Ext.form.DateField",
+    displayfield: "Ext.form.DisplayField",
+    field: "Ext.form.Field",
+    fieldset: "Ext.form.FieldSet",
+    hidden: "Ext.form.Hidden",
+    htmleditor: "Ext.form.HtmlEditor",
+    label: "Ext.form.Label",
+    numberfield: "Ext.form.NumberField",
+    radio: "Ext.form.Radio",
+    radiogroup: "Ext.form.RadioGroup",
+    textarea: "Ext.form.TextArea",
+    textfield: "Ext.form.TextField",
+    timefield: "Ext.form.TimeField",
+    trigger: "Ext.form.TriggerField",
+    twintrigger: "Ext.form.TwinTriggerField",
+    chart: "Ext.chart.Chart",
+    barchart: "Ext.chart.BarChart",
+    cartesianchart: "Ext.chart.CartesianChart",
+    columnchart: "Ext.chart.ColumnChart",
+    linechart: "Ext.chart.LineChart",
+    piechart: "Ext.chart.PieChart",
+    arraystore: "Ext.data.ArrayStore",
+    directstore: "Ext.data.DirectStore",
+    groupingstore: "Ext.data.GroupingStore",
+    jsonstore: "Ext.data.JsonStore",
+    simplestore: "Ext.data.SimpleStore",
+    store: "Ext.data.Store",
+    xmlstore: "Ext.data.XmlStore",
+    treegrid: "Ext.ux.tree.TreeGrid",
+
+    admservicesselector: "Ext.form.Field",
+    doctype: "Ext.form.Field",
+    docpriority: "Ext.form.Field",
+    docaccess: "Ext.form.Field",
+    docrazdel: "Ext.form.Field",
+    monthyearfield: "Ext.form.Field",
+    korcombo: "Ext.form.Field",
+    korselector: "Ext.form.Field",
+    viddocselector: "Ext.form.Field",
+    iagkors: "Ext.form.Field",
+    iagdos: "Ext.form.Field",
+    vuzlojcombo: "Ext.form.Field",
+    viddoccombo: "Ext.form.Field",
+    deliverycombo: "Ext.form.Field",
+    docregistercombo: "Ext.form.Field",
+    docregisterdefaultcombo: "Ext.form.Field",
+    docregisterzasedania: "Ext.form.Field",
+    AdmSrvcsListCombo: "Ext.form.Field",
+    AdmSrvcsGroupsCombo: "Ext.form.Field",
+    OblastiCombo: "Ext.form.Field",
+    ObshtiniCombo: "Ext.form.Field",
+    GradoveCombo: "Ext.form.Field",
+    StreetsCombo: "Ext.form.Field",
+    StreetCombo: "Ext.form.Field",
+    SocialSrvcsCombo: "Ext.form.Field",
+    ZadachiWithoutDocs: "Ext.form.Field",
+    OmbCheckResultCombo: "Ext.form.Field",
+    OmbActionsCombo: "Ext.form.Field",
+    OmbFinalResultCombo: "Ext.form.Field",
+    ViolationsListCombo: "Ext.form.Field",
+    orglistcombo: "Ext.form.Field",
+    PracticesListCombo: "Ext.form.Field",
+    orgbutton: "Ext.form.Field",
+    orgbuttonlist: "Ext.form.Field",
+    claimsvidcombo: "Ext.form.Field",
+    StdTexts: "Ext.form.Field"
+};
+
+Ext.reg("admservicesselector", Ext.form.ComboBox);
+Ext.reg('doctype', Ext.form.ComboBox);
+Ext.reg('docpriority', Ext.form.ComboBox);
+Ext.reg('docaccess', Ext.form.ComboBox);
+Ext.reg('docrazdel', Ext.form.ComboBox);
+Ext.reg('monthyearfield', Ext.form.ComboBox);
+Ext.reg('korcombo', Ext.form.ComboBox);
+Ext.reg('korselector', Ext.form.ComboBox);
+Ext.reg('viddocselector', Ext.form.ComboBox);
+Ext.reg('iagkors', Ext.form.ComboBox);
+Ext.reg('iagdos', Ext.form.ComboBox);
+Ext.reg('vuzlojcombo', Ext.form.ComboBox);
+Ext.reg('viddoccombo', Ext.form.ComboBox);
+Ext.reg('deliverycombo', Ext.form.ComboBox);
+Ext.reg('docregistercombo', Ext.form.ComboBox);
+Ext.reg('docregisterdefaultcombo', Ext.form.ComboBox);
+Ext.reg('docregisterzasedania', Ext.form.ComboBox);
+Ext.reg('AdmSrvcsListCombo', Ext.form.ComboBox);
+Ext.reg('AdmSrvcsGroupsCombo', Ext.form.ComboBox);
+Ext.reg('OblastiCombo', Ext.form.ComboBox);
+Ext.reg('ObshtiniCombo', Ext.form.ComboBox);
+Ext.reg('GradoveCombo', Ext.form.ComboBox);
+Ext.reg('StreetsCombo', Ext.form.ComboBox);
+Ext.reg('StreetCombo', Ext.form.ComboBox);
+Ext.reg('SocialSrvcsCombo', Ext.form.ComboBox);
+Ext.reg('ZadachiWithoutDocs', Ext.form.ComboBox);
+Ext.reg('OmbCheckResultCombo', Ext.form.ComboBox);
+Ext.reg('OmbActionsCombo', Ext.form.ComboBox);
+Ext.reg('OmbFinalResultCombo', Ext.form.ComboBox);
+Ext.reg('ViolationsListCombo', Ext.form.ComboBox);
+Ext.reg('orglistcombo', Ext.form.ComboBox);
+Ext.reg('PracticesListCombo', Ext.form.ComboBox);
+Ext.reg('orgbutton', Ext.form.ComboBox);
+Ext.reg('orgbuttonlist', Ext.form.ComboBox);
+Ext.reg('claimsvidcombo', Ext.form.ComboBox);
+Ext.reg('StdTexts', Ext.form.ComboBox);
