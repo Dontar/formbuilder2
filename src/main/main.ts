@@ -1,5 +1,3 @@
-/// <reference path="../typings/tsd.d.ts" />
-
 import * as EL from "electron";
 
 const app = EL.app;  // Module to control application life.

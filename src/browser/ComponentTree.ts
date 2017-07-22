@@ -1,4 +1,4 @@
-var data: {classes: any[]} = require("json!props2.json");
+var data: {classes: any[]} = require("./tpl/props2.json");
 
 class Components {
     cls: string;

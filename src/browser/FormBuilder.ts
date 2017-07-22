@@ -1,7 +1,6 @@
-/// <reference path="../typings/tsd.d.ts" />
-
-import * as CM from "lib/codemirror-5.12/lib/codemirror";
-import * as FS from "filesys";
+import * as Ext from "ext";
+import * as CM from "codemirror";
+import * as FS from "./filesys";
 import * as nodeFS from "fs";
 import * as PATH from "path";
 import * as ELC from "electron";
@@ -40,7 +39,7 @@ class PropertyStoreHack extends Ext.grid.PropertyStore {
     constructor(grid, source?) {
         super(grid, source);
         this.store = new Ext.data.GroupingStore({
-            recordType : Ext.grid.PropertyRecord,
+            recordType : <any>Ext.grid.PropertyRecord,
             sortInfo: {field: "order", direction: "DESC"},
             groupDir:"DESC",
             groupField: "order"
@@ -52,7 +51,7 @@ class PropertyStoreHack extends Ext.grid.PropertyStore {
     }
     constructProps(xtype): any[] {
         // var xtype = (cfg.xtype)?cfg.xtype:(cfg.items)?"container":"box";
-        var props = require("json!props2.json");
+        var props = require("./tpl/props2.json");
         var xtypeDef = props.classes.find((item) => {
             return item.xtype == xtype;
         });
@@ -498,7 +497,7 @@ export class MainWindow extends Ext.Viewport {
         }
     }
 
-    getSrcPartRange(part: "refs" | "actions" | "stores" | "designer" | "intf"): CodeMirror.Range {
+    getSrcPartRange(part: "refs" | "actions" | "stores" | "designer" | "intf"): CM.Range {
         var doc = this.edSource.editor.getDoc();
         var range = this.search(new RegExp(Parser.regExps[part], "g"));
         if (range) {
@@ -558,7 +557,7 @@ export class MainWindow extends Ext.Viewport {
         }
     }
 
-    search(needle: string | RegExp): CodeMirror.Range {
+    search(needle: string | RegExp): CM.Range {
         var regExp;
         if (typeof needle === "string") {
             regExp = new RegExp(Parser.esc(needle), "g");
@@ -732,7 +731,7 @@ export class MainWindow extends Ext.Viewport {
             folderSort: true
         });
 
-        this.edSource = new SourceEditor(<CodeMirror.EditorConfiguration>{
+        this.edSource = new SourceEditor(<CM.EditorConfiguration>{
             gutters: ["CodeMirror-linenumbers"],
             lineNumbers: true,
             indentUnit: 4
@@ -926,7 +925,7 @@ export class MainWindow extends Ext.Viewport {
     }
 }
 
-import {getMainMenu} from "MainMenu";
+import {getMainMenu} from "./MainMenu";
 
 Ext.onReady(() => {
     var appView = new MainWindow();

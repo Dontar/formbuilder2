@@ -1,5 +1,3 @@
-/// <reference path="../typings/tsd.d.ts" />
-
 import {TypeMap} from "./TypeMap";
 
 class PropProxy extends Ext.data.DataProxy {

@@ -1,5 +1,3 @@
-/// <reference path="../typings/node/node.d.ts" />
-
 import * as FS from "fs";
 import * as PATH from "path";
 

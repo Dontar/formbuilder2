@@ -1,4 +1,3 @@
-/// <reference path="../typings/tsd.d.ts" />
 export var TypeMap = {
     box: "Ext.BoxComponent",
     button: "Ext.Button",

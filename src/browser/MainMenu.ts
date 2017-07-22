@@ -1,8 +1,7 @@
-/// <reference path="../typings/tsd.d.ts" />
 
 import * as ELC from "electron";
-import {MainWindow} from "FormBuilder"
-import * as FILE from "filesys";
+import {MainWindow} from "./FormBuilder"
+import * as FILE from "./filesys";
 import * as PATH from "path";
 import {remote, app} from "electron";
 
@@ -29,7 +28,7 @@ class FileCommands {
             text: "main.ts",
             leaf: true
         });
-        FILE.writeFile(n.id, require("text!tpl/ts/main.tpl")).then(() => {
+        FILE.writeFile(n.id, require("./tpl/ts/main.tpl")).then(() => {
             node.expand();
             n.select();
             this.appView.fileEditor.triggerEdit.defer(100, this.appView.fileEditor, [n]);
@@ -43,7 +42,7 @@ class FileCommands {
             text: "container.ts",
             leaf: true
         });
-        FILE.writeFile(n.id, require("text!tpl/ts/container.tpl")).then(() => {
+        FILE.writeFile(n.id, require("./tpl/ts/container.tpl")).then(() => {
             node.expand();
             n.select();
             this.appView.fileEditor.triggerEdit.defer(100, this.appView.fileEditor, [n]);
@@ -57,7 +56,7 @@ class FileCommands {
             text: "panel.ts",
             leaf: true
         });
-        FILE.writeFile(n.id, require("text!tpl/ts/panel.tpl")).then(() => {
+        FILE.writeFile(n.id, require("./tpl/ts/panel.tpl")).then(() => {
             node.expand();
             n.select();
             this.appView.fileEditor.triggerEdit.defer(100, this.appView.fileEditor, [n]);
@@ -71,7 +70,7 @@ class FileCommands {
             text: "window.ts",
             leaf: true
         });
-        FILE.writeFile(n.id, require("text!tpl/ts/window.tpl")).then(() => {
+        FILE.writeFile(n.id, require("./tpl/ts/window.tpl")).then(() => {
             node.expand();
             n.select();
             this.appView.fileEditor.triggerEdit.defer(100, this.appView.fileEditor, [n]);
@@ -85,7 +84,7 @@ class FileCommands {
             text: "intex.html",
             leaf: true
         });
-        FILE.writeFile(n.id, require("text!tpl/ts/index.html.tpl")).then(() => {
+        FILE.writeFile(n.id, require("./tpl/ts/index.html.tpl")).then(() => {
             node.expand();
             n.select();
             this.appView.fileEditor.triggerEdit.defer(100, this.appView.fileEditor, [n]);
@@ -99,7 +98,7 @@ class FileCommands {
             text: "New_file.js",
             leaf: true
         });
-        FILE.writeFile(n.id, require("text!tpl/js/JSTemplate.tpl")).then(() => {
+        FILE.writeFile(n.id, require("./tpl/js/JSTemplate.tpl")).then(() => {
             node.expand();
             n.select();
             this.appView.fileEditor.triggerEdit.defer(100, this.appView.fileEditor, [n]);
@@ -310,8 +309,8 @@ export function getMainMenu(appView: MainWindow) {
             label: 'Toggle Developer Tools',
             accelerator:  'F12',
             click: function(item, focusedWindow) {
-                if (focusedWindow)
-                    focusedWindow.toggleDevTools();
+                // if (focusedWindow)
+                    // focusedWindow.toggleDevTools();
             }
         }
     ]);
@@ -330,17 +329,17 @@ export function getMainMenu(appView: MainWindow) {
 
     appView.treeFiles.on("contextmenu", (node, e) => {
         node.select();
-        var pos = e.getXY();
-        setTimeout(() => {fileMenu.popup(remote.getCurrentWindow(), pos[0], pos[1]);});
+        var [x, y] = e.getXY();
+        setTimeout(() => {fileMenu.popup(remote.getCurrentWindow(), {x, y});});
 
         // e.stopEvent();
     });
     appView.treeFiles.on("containercontextmenu", (tree: Ext.tree.TreePanel, e) => {
         c.currentFileNode = tree.getRootNode();
-        var pos = e.getXY();
+        var [x, y] = e.getXY();
         (<any>fileMenu.items[0]).enabled = true;
         (<any>fileMenu.items[1]).enabled = true;
-        setTimeout(() => {fileMenu.popup(remote.getCurrentWindow(), pos[0], pos[1]);});
+        setTimeout(() => {fileMenu.popup(remote.getCurrentWindow(), {x, y});});
         // e.stopEvent();
     });
 
@@ -349,16 +348,16 @@ export function getMainMenu(appView: MainWindow) {
             var el = sender.getEl();
             el.on("contextmenu", (e: Ext.EventObject, el: HTMLElement) => {
                 e.stopEvent();
-                var pos = e.getXY();
-                editMenu.popup(remote.getCurrentWindow(), pos[0], pos[1]);
+                var [x, y] = e.getXY();
+                editMenu.popup(remote.getCurrentWindow(), {x, y});
             });
         });
     } else {
         var el = appView.edSource.getEl();
         el.on("contextmenu", (e: Ext.EventObject, el: HTMLElement) => {
             e.stopEvent();
-            var pos = e.getXY();
-            editMenu.popup(remote.getCurrentWindow(), pos[0], pos[1]);
+            var [x, y] = e.getXY();
+            editMenu.popup(remote.getCurrentWindow(), {x, y});
         });
     }
 

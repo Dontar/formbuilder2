@@ -1,5 +1,3 @@
-/// <reference path="../typings/tsd.d.ts" />
-
 import {ActionClass, StoreClass, StoreFieldClass, Parser, ComponentClass, ColumnClass} from "./Parser";
 import {TypeMap} from "./TypeMap";
 
@@ -393,7 +391,7 @@ export class ComponentMenu extends Ext.menu.Menu {/* refs */
             });
 
             this.menuXtypes.removeAll(true);
-            this.menuXtypes.add([
+            this.menuXtypes.add(<Ext.menu.ItemConfig[]>[
                 { xtype: "menuitem", hideOnClick: false, text: "Containers", menu: containers },
                 { xtype: "menuitem", hideOnClick: false, text: "Fields", menu: fields },
                 { xtype: "menuitem", hideOnClick: false, text: "Grids", menu: grids },

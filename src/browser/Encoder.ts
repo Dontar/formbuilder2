@@ -46,7 +46,6 @@ function encodeArray(o, indent) {
         switch (typeof v) {
             case "undefined":
             case "function":
-            case "unknown":
                 break;
             default:
                 if (b) {
@@ -104,7 +103,6 @@ export function encode(o, indent) {
                 switch (typeof v) {
                     case "undefined":
                     case "function":
-                    case "unknown":
                         break;
                     default:
                         if (b) {

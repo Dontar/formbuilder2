@@ -1,5 +1,3 @@
-/// <reference path="../typings/tsd.d.ts" />
-
 import {TypeMap} from "./TypeMap";
 import * as ENC from "./Encoder";
 
@@ -760,7 +758,7 @@ export class Parser {
         }
         var syncCompsAndNodes = (idx, comp, compId) => {
             if (comp._node) {
-                var node = this.componentsNode.getOwnerTree().getNodeById(comp._node);
+                var node = this.componentsNode.getOwnerTree<Ext.tree.TreePanel>().getNodeById(comp._node);
                 if (node) {
                     node.attributes.compId = compId;
                 }

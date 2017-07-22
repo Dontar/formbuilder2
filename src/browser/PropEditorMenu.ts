@@ -1,5 +1,3 @@
-/// <reference path="../typings/tsd.d.ts" />
-
 export class PropEditorMenu extends Ext.menu.Menu {
     aDelProperty: Ext.Action;
     edPropCombo: Ext.form.ComboBox;
@@ -46,7 +44,7 @@ export class PropEditorMenu extends Ext.menu.Menu {
 
     initGui() {
         // var props: any = FS.readFileSync(PATH.join(__dirname, "props.json"), "utf8");
-        var props: any = require("json!props.json");
+        var props: any = require("./tpl/props.json");
         if (props) {
             props = Ext.unique(props);
         } else {
