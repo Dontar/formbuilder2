@@ -47,12 +47,6 @@ const config: webpack.Configuration[] = [{
 		extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
 	},
 	target: "electron-main",
-	plugins: [
-		new HtmlWebpackPlugin({
-			title: 'Custom template using Handlebars',
-			template: 'src/assets/package.json'
-		})
-	],
 	// Enable sourcemaps for debugging webpack's output.
 	module: {
 		rules: [
