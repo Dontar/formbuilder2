@@ -1,9 +1,7 @@
-
-import * as ELC from "electron";
-import {MainWindow} from "./FormBuilder"
-import * as FILE from "./filesys";
 import * as PATH from "path";
 import {remote, app} from "electron";
+import * as FILE from "./filesys";
+import {MainWindow} from "./FormBuilder"
 
 class FileCommands {
     currentFileNode: Ext.tree.TreeNode;
@@ -309,8 +307,8 @@ export function getMainMenu(appView: MainWindow) {
             label: 'Toggle Developer Tools',
             accelerator:  'F12',
             click: function(item, focusedWindow) {
-                // if (focusedWindow)
-                    // focusedWindow.toggleDevTools();
+                if (focusedWindow)
+                    focusedWindow.webContents.openDevTools();
             }
         }
     ]);

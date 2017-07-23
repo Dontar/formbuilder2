@@ -42,6 +42,10 @@ const config: webpack.Configuration[] = [{
 		filename: "main.js",
 		path: buildPath
 	},
+	node: {
+		__dirname: false,
+		__filename: false,
+	},
 	resolve: {
 		// Add '.ts' and '.tsx' as resolvable extensions.
 		extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]

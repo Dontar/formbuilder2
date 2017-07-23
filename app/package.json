@@ -1,5 +1,7 @@
 {
     "name": "form-builder-2",
     "version": "1.0.0",
-    "main": "main.js"
+    "main": "main.js",
+    "description": "ExtJS 3.4 GUI Designer",
+    "author": "Kaloyan Arsov<kaloyan.arsov@gmail.com>"
 }

@@ -1,7 +1,9 @@
 import * as CM from "codemirror";
+import * as Ext from "ext";
 
 import "codemirror/lib/codemirror.css";
 import "codemirror/mode/meta";
+import "./CMModes";
 
 import "codemirror/addon/comment/comment";
 import "codemirror/addon/comment/continuecomment";
@@ -16,7 +18,7 @@ import "codemirror/addon/edit/matchbrackets";
 import "codemirror/addon/edit/matchtags";
 import "codemirror/addon/edit/trailingspace";
 
-import "codemirror/addon/mode/loadmode";
+// import "codemirror/addon/mode/loadmode";
 import "codemirror/addon/mode/simple";
 
 import "codemirror/addon/search/searchcursor";
@@ -42,9 +44,9 @@ import "codemirror/theme/mdn-like.css";
 export class SourceEditor extends Ext.BoxComponent {
     editor: CM.Editor;
 
-    constructor(config?: Ext.BoxComponentConfig|CM.EditorConfiguration) {
+    constructor(config?: Ext.BoxComponentConfig & CM.EditorConfiguration) {
         super(config);
-        CM.modeURL = "lib/codemirror-5.12/mode/%N/%N";
+        // CM.modeURL = "lib/codemirror-5.12/mode/%N/%N";
     }
 
     onRender(ct, position) {
@@ -67,6 +69,9 @@ export class SourceEditor extends Ext.BoxComponent {
         super.onResize(adjWidth, adjHeight, rawWidth, rawHeight);
         this.editor.setSize(adjWidth, adjHeight);
         this.editor.refresh();
+    }
+    setMode(mode: string) {
+        this.editor.setOption('mode', mode);
     }
 }
 Ext.reg('sourceeditor', SourceEditor);

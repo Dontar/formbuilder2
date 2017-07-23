@@ -1,10 +1,15 @@
+import "ext/dist/theme-blue";
+import "ext/dist/ux-style";
 import * as Ext from "ext";
+
 import * as CM from "codemirror";
-import * as FS from "./filesys";
+
 import * as nodeFS from "fs";
 import * as PATH from "path";
 import * as ELC from "electron";
+import * as mime from "mime";
 
+import * as FS from "./filesys";
 import {SourceEditor} from "./SourceEditor";
 import {Parser, ActionClass, StoreClass, StoreFieldClass, ColumnClass} from "./Parser";
 import {ComponentMenu} from "./ComponentMenu";
@@ -15,6 +20,11 @@ import * as CT from "./ComponentTree";
 
 var remote = ELC.remote;
 var Menu = remote.Menu;
+
+interface IRange {
+    from: CM.Position;
+    to: CM.Position;
+}
 
 // var Range: typeof AceAjax.Range = ace.require("ace/range").Range;
 // var Search: typeof AceAjax.Search = ace.require("ace/search").Search;
@@ -433,14 +443,8 @@ export class MainWindow extends Ext.Viewport {
         this.panelDesign.update("");
 
         FS.readFile(this.currentFile.id).then((data) => {
-            var mode = CM.findModeByExtension(PATH.extname(this.currentFile.id).slice(1));
-            if (mode) {
-                CM.requireMode(mode.mode, () => {
-                    this.edSource.editor.setOption('mode', mode.mime);
-                });
-            } else {
-                this.edSource.editor.setOption('mode', null);
-            }
+            var mode = mime.lookup(PATH.extname(this.currentFile.id).slice(1));
+            this.edSource.setMode(mode);
             this.updatingSource = true;
             this.edSource.editor.setValue(data);
             this.edSource.editor.getDoc().clearHistory();
@@ -497,14 +501,12 @@ export class MainWindow extends Ext.Viewport {
         }
     }
 
-    getSrcPartRange(part: "refs" | "actions" | "stores" | "designer" | "intf"): CM.Range {
+    getSrcPartRange(part: "refs" | "actions" | "stores" | "designer" | "intf"): IRange {
         var doc = this.edSource.editor.getDoc();
         var range = this.search(new RegExp(Parser.regExps[part], "g"));
         if (range) {
             range.from.ch += Parser.marker[part].length;
             range.to.ch -= Parser.marker[part].length;
-            range.from = doc.clipPos(range.from);
-            range.to = doc.clipPos(range.to);
         }
         return range;
     }
@@ -557,7 +559,7 @@ export class MainWindow extends Ext.Viewport {
         }
     }
 
-    search(needle: string | RegExp): CM.Range {
+    search(needle: string | RegExp): IRange {
         var regExp;
         if (typeof needle === "string") {
             regExp = new RegExp(Parser.esc(needle), "g");
@@ -568,9 +570,7 @@ export class MainWindow extends Ext.Viewport {
         var rgResult = regExp.exec(source);
         if (rgResult) {
             var doc = this.edSource.editor.getDoc();
-            var from = doc.posFromIndex(rgResult.index);
-            var to = doc.posFromIndex(regExp.lastIndex);
-            return { from, to };
+            return { from: doc.posFromIndex(rgResult.index), to: doc.posFromIndex(regExp.lastIndex) };
         }
     }
 
@@ -578,7 +578,7 @@ export class MainWindow extends Ext.Viewport {
         var doc = this.edSource.editor.getDoc();
         var range = this.search("/* methods */");
         if (range) {
-            doc.setSelection(range.to);
+            doc.setSelection(range.from, range.to);
 
             doc.replaceSelection([
                 "",
@@ -588,8 +588,8 @@ export class MainWindow extends Ext.Viewport {
                 // "        }",
                 "}",
                 ""
-            ].join(doc.lineSeparator()), "end");
-            this.edSource.editor.indentSelection();
+            ].join((<any>doc).lineSeparator()), "end");
+            (<any>this.edSource.editor).indentSelection();
         }
     }
 
