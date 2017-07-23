@@ -4,12 +4,11 @@
     "description": "ExtJS 3.4 GUI Designer",
     "main": "app/main.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "build:prod": "webpack -p",
         "build:dev": "webpack",
-        "electron": "electron ./app",
-        "pack": "electron-builder --dir",
-        "dist": "electron-builder"
+        "test": "npm run build:dev && electron ./app",
+        "pack": "npm run build:prod && electron-builder --dir",
+        "dist": "npm run build:prod && electron-builder"
     },
     "keywords": [
         "extjs",
