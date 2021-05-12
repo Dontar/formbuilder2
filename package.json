@@ -18,7 +18,7 @@
     "author": "Kaloyan Arsov",
     "license": "GPL-3.0",
     "dependencies": {
-        "codemirror": "^5.28.0",
+        "codemirror": "^5.58.2",
         "ext": "git+https://github.com/Dontar/ExtJs3.4.git",
         "mime": "^1.3.6"
     },
